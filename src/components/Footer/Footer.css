@@ -1,0 +1,23 @@
+.Footer {
+  grid-column: 1/13;
+  grid-row: 12/13;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.first-footer {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.second-footer {
+  grid-column: 3/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: x-small;
+}

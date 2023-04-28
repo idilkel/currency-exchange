@@ -1,0 +1,13 @@
+.logo-component-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-component-container p {
+  font-size: x-large;
+  font-weight: bolder;
+  color: #0ccac4;
+  font-family: "Sigmar";
+  letter-spacing: 2px;
+}
