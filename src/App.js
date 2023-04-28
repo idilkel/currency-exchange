@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import LogoComponent from "./components/LogoComponent/LogoComponent";
 import Links from "./components/Links/Links";
 import { Outlet } from "react-router-dom";
+import Main from "./components/Main/Main";
 
 function App() {
   const rates = useSelector((state) => state.rates);
@@ -33,10 +34,23 @@ function App() {
         <Links />
       </div>
 
-      <LineChart />
+      <Main />
       <Footer />
     </div>
   );
 }
 
 export default App;
+
+// return (
+//   <div className="App">
+//     <NavBar />
+//     <div className="logo-and-links">
+//       <LogoComponent />
+//       <Links />
+//     </div>
+
+//     <LineChart />
+//     <Footer />
+//   </div>
+// );

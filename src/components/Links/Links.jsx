@@ -1,11 +1,13 @@
-import Breadcrumb from "react-bootstrap/Breadcrumb";
+import { Link } from "react-router-dom";
+import "./Links.css";
 
 function Links() {
   return (
-    <Breadcrumb>
-      <Breadcrumb.Item href="#">About</Breadcrumb.Item>
-      <Breadcrumb.Item href="#">Contact Us</Breadcrumb.Item>
-    </Breadcrumb>
+    <div className="Links">
+      <Link to="about">About</Link>
+      <span> | </span>
+      <Link to="contact">Contact Us</Link>
+    </div>
   );
 }
 

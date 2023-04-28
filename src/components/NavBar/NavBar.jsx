@@ -8,6 +8,7 @@ import { BsCurrencyDollar, BsCurrencyEuro } from "react-icons/bs";
 import store from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFromRates } from "../../redux/ratesReducer";
+import { LinkContainer } from "react-router-bootstrap";
 
 const NavBar = () => {
   let ILSRate = store.getState().rates.conversionRates.ILS;
@@ -82,75 +83,85 @@ const NavBar = () => {
             <Navbar.Text>To:</Navbar.Text>
           </Nav>
           <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <img
-                src={require("../../assets/icons8-israel-48.png")}
-                alt="flag"
-              />
-              <RateComponent
-                currency="ILS"
-                rate={
-                  fromRate
-                    ? `${Number(
-                        Math.round(fromRate / ILSRate + "e2") + "e-2"
-                      ).toFixed(2)}`
-                    : "--"
-                }
-              />
-            </Nav.Link>
+            <LinkContainer to="calculator/ILS">
+              <Nav.Link>
+                <img
+                  src={require("../../assets/icons8-israel-48.png")}
+                  alt="flag"
+                />
+                <RateComponent
+                  currency="ILS"
+                  rate={
+                    fromRate
+                      ? `${Number(
+                          Math.round(fromRate / ILSRate + "e2") + "e-2"
+                        ).toFixed(2)}`
+                      : "--"
+                  }
+                />
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
           <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <img src={require("../../assets/icons8-usa-48.png")} alt="flag" />
-              <RateComponent
-                currency="USD"
-                rate={
-                  fromRate
-                    ? `${Number(
-                        Math.round(fromRate / USDRate + "e2") + "e-2"
-                      ).toFixed(2)}`
-                    : "--"
-                }
-              />
-            </Nav.Link>{" "}
+            <LinkContainer to="calculator/USD">
+              <Nav.Link>
+                <img
+                  src={require("../../assets/icons8-usa-48.png")}
+                  alt="flag"
+                />
+                <RateComponent
+                  currency="USD"
+                  rate={
+                    fromRate
+                      ? `${Number(
+                          Math.round(fromRate / USDRate + "e2") + "e-2"
+                        ).toFixed(2)}`
+                      : "--"
+                  }
+                />
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
           <Nav className="me-auto">
-            {" "}
-            <Nav.Link href="#home">
-              <img
-                className="europe"
-                src={require("../../assets/icons8-flag-of-europe-48.png")}
-                alt="flag"
-              />
-              <RateComponent
-                currency="EUR"
-                rate={
-                  fromRate
-                    ? `${Number(
-                        Math.round(fromRate / EURRate + "e2") + "e-2"
-                      ).toFixed(2)}`
-                    : "--"
-                }
-              />
-            </Nav.Link>
+            <LinkContainer to="calculator/EUR">
+              <Nav.Link>
+                <img
+                  className="europe"
+                  src={require("../../assets/icons8-flag-of-europe-48.png")}
+                  alt="flag"
+                />
+                <RateComponent
+                  currency="EUR"
+                  rate={
+                    fromRate
+                      ? `${Number(
+                          Math.round(fromRate / EURRate + "e2") + "e-2"
+                        ).toFixed(2)}`
+                      : "--"
+                  }
+                />
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
           <Nav className="me-auto">
-            <Nav.Link href="#home">
-              <img
-                src={require("../../assets/icons8-great-britain-48.png")}
-                alt="flag"
-              />
-              <RateComponent
-                currency="GBP"
-                rate={
-                  fromRate
-                    ? `${Number(
-                        Math.round(fromRate / GBPRate + "e2") + "e-2"
-                      ).toFixed(2)}`
-                    : "--"
-                }
-              />
-            </Nav.Link>
+            <LinkContainer to="calculator/GBP">
+              <Nav.Link>
+                <img
+                  src={require("../../assets/icons8-great-britain-48.png")}
+                  alt="flag"
+                />
+                <RateComponent
+                  currency="GBP"
+                  rate={
+                    fromRate
+                      ? `${Number(
+                          Math.round(fromRate / GBPRate + "e2") + "e-2"
+                        ).toFixed(2)}`
+                      : "--"
+                  }
+                />
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>
