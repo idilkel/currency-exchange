@@ -19,3 +19,9 @@
 .logo-link p {
   margin: 0;
 }
+
+@media only screen and (max-width: 500px) {
+  .logo-component-container p {
+    font-size: large;
+  }
+}

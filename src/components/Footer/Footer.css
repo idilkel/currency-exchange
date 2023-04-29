@@ -21,3 +21,17 @@
   height: 100%;
   font-size: x-small;
 }
+
+@media only screen and (max-height: 807px) {
+  .first-footer {
+    grid-column: 1/3;
+    font-size: small;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .first-footer {
+    grid-column: 1/3;
+    font-size: small;
+  }
+}
