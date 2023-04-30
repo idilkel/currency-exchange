@@ -25,7 +25,16 @@ canvas {
 
 @media only screen and (max-width: 450px) {
   .select-responsive {
+    padding: 3px;
     display: block;
+  }
+
+  .select-responsive option {
+    font-size: small;
+  }
+
+  .lineChart-container {
+    justify-content: start;
   }
 }
 

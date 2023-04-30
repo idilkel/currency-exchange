@@ -1271,6 +1271,15 @@ const LineChart = () => {
 
   //--------For responsive - Start ------------
   const dispatch = useDispatch();
+
+  const changeSelectionFromRedux = (currentFrom) => {
+    let current = currentFrom.substring(0, 3);
+    console.log("LineChart changeSelectionFromRedux: " + current);
+    return current;
+  };
+
+  changeSelectionFromRedux(fromRate);
+
   const handleSelectFrom = (e) => {
     console.log(e.target.value);
     let fromCurrency = e.target.value;
@@ -1298,7 +1307,7 @@ const LineChart = () => {
       className="select-responsive"
       name="selectedCurrency"
       id="selectedCurrency"
-      defaultValue="ILS"
+      value={changeSelectionFromRedux(fromRate)}
       onChange={handleSelectFrom}
     >
       <option value="ILS">ILS</option>

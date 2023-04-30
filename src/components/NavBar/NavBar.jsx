@@ -9,6 +9,7 @@ import store from "../../redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFromRates } from "../../redux/ratesReducer";
 import { LinkContainer } from "react-router-bootstrap";
+import { useState } from "react";
 
 const NavBar = () => {
   let ILSRate = store.getState().rates.conversionRates.ILS;
@@ -38,6 +39,14 @@ const NavBar = () => {
   }
 
   console.log(fromRate);
+
+  const changeSelectionFromRedux = (currentFrom) => {
+    let current = currentFrom.substring(0, 3);
+    console.log("NavBar changeSelectionFromRedux: " + current);
+    return current;
+  };
+
+  changeSelectionFromRedux(rates.fromRate);
 
   const handleSelectFrom = (e) => {
     console.log(e.target.value);
@@ -71,7 +80,10 @@ const NavBar = () => {
             <Navbar.Text>
               {" "}
               &nbsp;From:&nbsp;&nbsp;
-              <select defaultValue="ILS" onChange={handleSelectFrom}>
+              <select
+                value={changeSelectionFromRedux(rates.fromRate)}
+                onChange={handleSelectFrom}
+              >
                 <option value="ILS">ILS</option>
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>

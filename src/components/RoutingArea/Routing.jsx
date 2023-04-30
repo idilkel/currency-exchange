@@ -6,6 +6,7 @@ import About from "../About/About";
 import Contact from "../Contact/Contact";
 import LineChart from "../LineChart/LineChart";
 import RateCalculator from "../RateCalculator/RateCalculator";
+import "./Routing.css";
 
 const Routing = () => {
   return (
