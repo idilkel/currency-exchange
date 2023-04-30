@@ -2,3 +2,15 @@
   font-size: larger;
   font-weight: 700;
 }
+
+@media only screen and (max-width: 500px) {
+  .Links a {
+    font-size: large;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .Links a {
+    font-size: large;
+  }
+}

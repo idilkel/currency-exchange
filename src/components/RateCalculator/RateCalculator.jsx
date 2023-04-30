@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import FormContainer from "../Contact/FormContainer.js";
 
 const RateCalculator = () => {
   const currency = useParams().currency || "";
@@ -17,16 +18,17 @@ const RateCalculator = () => {
   const USDRate = rates.conversionRates.USD;
   const EURRate = rates.conversionRates.EUR;
   const GBPRate = rates.conversionRates.GBP;
+
   console.log(
     "Amount: " + amount + ", From: " + fromRate + ", To ILSRate: " + ILSRate
   );
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log("submitted: " + amount);
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   console.log("submitted: " + amount);
+  // };
   return (
-    <div className="RateCalculator">
+    <FormContainer className="RateCalculator">
       <h2>RateCalculator</h2>
       <Form>
         <Form.Group className="mb-3" controlId="From">
@@ -41,15 +43,13 @@ const RateCalculator = () => {
             Please enter the amount in {currency} to be calculated
           </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit" onClick={submitHandler}>
+        {/*<Button variant="primary" type="submit" onClick={submitHandler}>
           Submit
-        </Button>
+  </Button>*/}
       </Form>
       <div>To: </div>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1" style={{ width: "6%" }}>
-          ILS
-        </InputGroup.Text>
+        <InputGroup.Text id="basic-addon1">ILS</InputGroup.Text>
         <Form.Control
           placeholder={
             amount
@@ -60,12 +60,11 @@ const RateCalculator = () => {
           }
           aria-label="ILS"
           aria-describedby="basic-addon1"
+          disabled
         />
       </InputGroup>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon2" style={{ width: "6%" }}>
-          USD
-        </InputGroup.Text>
+        <InputGroup.Text id="basic-addon2">USD</InputGroup.Text>
         <Form.Control
           placeholder={
             amount
@@ -76,12 +75,11 @@ const RateCalculator = () => {
           }
           aria-label="USD"
           aria-describedby="basic-addon2"
+          disabled
         />
       </InputGroup>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon3" style={{ width: "6%" }}>
-          EUR
-        </InputGroup.Text>
+        <InputGroup.Text id="basic-addon3">EUR</InputGroup.Text>
         <Form.Control
           placeholder={
             amount
@@ -92,12 +90,11 @@ const RateCalculator = () => {
           }
           aria-label="EUR"
           aria-describedby="basic-addon3"
+          disabled
         />
       </InputGroup>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon4" style={{ width: "6%" }}>
-          GBP
-        </InputGroup.Text>
+        <InputGroup.Text id="basic-addon4">GBP</InputGroup.Text>
         <Form.Control
           placeholder={
             amount
@@ -108,9 +105,10 @@ const RateCalculator = () => {
           }
           aria-label="GBP"
           aria-describedby="basic-addon4"
+          disabled
         />
       </InputGroup>
-    </div>
+    </FormContainer>
   );
 };
 

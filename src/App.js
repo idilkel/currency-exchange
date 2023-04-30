@@ -4,7 +4,11 @@ import RateComponent from "./components/RateComponent/RateComponent";
 import NavBar from "./components/NavBar/NavBar";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchRates, fetchRates2 } from "./redux/ratesReducer";
+import {
+  fetchRates,
+  fetchRates2,
+  fetchRatesHistory,
+} from "./redux/ratesReducer";
 import LineChart from "./components/LineChart/LineChart";
 import Footer from "./components/Footer/Footer";
 import LogoComponent from "./components/LogoComponent/LogoComponent";
@@ -18,7 +22,9 @@ function App() {
 
   // Real rates:
   useEffect(() => {
+    console.log("fetching rates with useEffect...");
     dispatch(fetchRates2());
+    // dispatch(fetchRatesHistory());
   }, []);
 
   // //Mock Rates

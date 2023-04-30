@@ -2,8 +2,44 @@
   height: 100%;
 }
 
+.contact-message {
+  border: 1px solid gray;
+  padding: 20px;
+  margin: 10px 0;
+}
+
 @media only screen and (max-height: 807px) {
   .Contact .container {
     max-height: 90%;
+  }
+
+  .container input,
+  .container textarea {
+    padding: 3px 10px;
+    font-size: small;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container h1 {
+    font-size: larger;
+  }
+}
+
+@media only screen and (max-height: 650px) {
+  .container h1 {
+    font-size: larger;
+  }
+
+  .container img {
+    width: 50%;
+    height: 50%;
+  }
+
+  #fullName,
+  #subject,
+  #email,
+  #message {
+    margin-bottom: 0 !important;
   }
 }

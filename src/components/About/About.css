@@ -1,2 +1,45 @@
 .About {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-container {
+  margin: 20px;
+}
+
+.About h4 {
+  font-style: italic;
+  color: rgb(0, 89, 255);
+}
+
+.About p {
+  margin: 20px;
+  font-size: large;
+}
+
+.About ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: justify;
+}
+
+@media only screen and (max-height: 807px) {
+  .About .container {
+    max-height: 90%;
+  }
+
+  .About p {
+    margin: 5px;
+    font-size: small;
+  }
+
+  .About ul {
+    padding-left: 10px;
+    font-size: large;
+    font-weight: 500;
+  }
 }

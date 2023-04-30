@@ -25,3 +25,13 @@
     font-size: large;
   }
 }
+
+@media only screen and (max-height: 500px) {
+  .logo-component-container p {
+    font-size: large;
+  }
+
+  .logo-component-container img {
+    width: 10%;
+  }
+}

@@ -1,2 +1,34 @@
 .RateCalculator {
 }
+
+#basic-addon1,
+#basic-addon2,
+#basic-addon3,
+#basic-addon4 {
+  width: 17%;
+  display: block;
+}
+
+@media only screen and (max-width: 500px) {
+  .RateCalculator h2 {
+    font-size: larger;
+  }
+}
+
+@media only screen and (max-height: 6000px) {
+  .container h2 {
+    font-size: larger;
+  }
+
+  .container input {
+    padding-top: 1px 0;
+  }
+
+  #basic-addon1,
+  #basic-addon2,
+  #basic-addon3,
+  #basic-addon4 {
+    padding: 2px 0;
+    font-size: small;
+  }
+}

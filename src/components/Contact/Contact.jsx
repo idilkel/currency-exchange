@@ -5,7 +5,8 @@ import Form from "react-bootstrap/Form";
 import FormContainer from "./FormContainer";
 
 const Contact = () => {
-  const [validated, setValidated] = useState(false);
+  // const [validated, setValidated] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     email: "",
     fullName: "",
@@ -55,9 +56,122 @@ const Contact = () => {
     } else {
       console.log("form submitted");
       console.log(form);
-      setForm({ email: "", fullName: "", message: "", subject: "" });
+
+      setSubmitted(true);
     }
   };
+
+  const handleBackToForm = (e) => {
+    e.preventDefault();
+    setForm({ email: "", fullName: "", message: "", subject: "" });
+    setSubmitted(false);
+  };
+
+  const formSubmitted = (
+    <div>
+      <h4>Form was submitted</h4>
+      <div className="contact-message">
+        {" "}
+        <p>Full name: {form.fullName}</p>
+        <p>Email: {form.email}</p>
+        <p>Subject: {form.subject}</p>
+        <p>Message: {form.message}</p>
+      </div>
+
+      <p>Thank you for your message!</p>
+      <Button
+        onClick={handleBackToForm}
+        variant="primary"
+        type="submit"
+        className="my-2"
+      >
+        Back To Form
+      </Button>
+    </div>
+  );
+
+  const theForm = (
+    <Form>
+      <Form.Group className="mb-3" controlId="formFullName" id="fullName">
+        <Form.Label className="mb-0">Full Name</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter full name"
+          value={form.fullName}
+          onChange={(e) => setField("fullName", e.target.value)}
+          isInvalid={!!errors.fullName}
+          required
+        />
+        <Form.Control.Feedback type="invalid">
+          {/*Please enter full name.*/}
+          {errors.fullName}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formSubject" id="subject">
+        <Form.Label className="mb-0">Subject</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter subject"
+          value={form.subject}
+          onChange={(e) => setField("subject", e.target.value)}
+          isInvalid={!!errors.subject}
+          required
+        />
+        <Form.Control.Feedback type="invalid">
+          {/*Please enter a subject.*/}
+          {errors.subject}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formEmail" id="email">
+        <Form.Label className="mb-0">Email address</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Enter email"
+          value={form.email}
+          onChange={(e) => setField("email", e.target.value)}
+          isInvalid={!!errors.email}
+          required
+        />
+        <Form.Control.Feedback type="invalid">
+          {/* Please enter valid email.*/}
+          {errors.email}
+        </Form.Control.Feedback>
+        {/*<Form.Text className="text-muted">
+          We'll never share your email with anyone else.
+  </Form.Text>*/}
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formMessage" id="message">
+        <Form.Label className="mb-0">Message</Form.Label>
+        <Form.Control
+          as="textarea"
+          type="textarea"
+          rows={3}
+          placeholder="Enter message"
+          value={form.message}
+          onChange={(e) => setField("message", e.target.value)}
+          isInvalid={!!errors.message}
+          required
+        />
+        <Form.Control.Feedback type="invalid">
+          {/* Please enter a message.*/}
+          {errors.message}
+        </Form.Control.Feedback>
+      </Form.Group>
+
+      <Button
+        onClick={handleSubmit}
+        variant="primary"
+        type="submit"
+        className="my-2"
+        size="sm"
+      >
+        Submit
+      </Button>
+    </Form>
+  );
 
   // const handleSubmit = (event) => {
   //   event.preventDefault();
@@ -80,85 +194,7 @@ const Contact = () => {
     <FormContainer className="Contact">
       <h1>Contact us</h1>
       {/*<Form noValidate validated={validated} onSubmit={handleSubmit}>*/}
-      <Form>
-        <Form.Group className="mb-3" controlId="formFullName">
-          <Form.Label>Full Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter full name"
-            value={form.fullName}
-            onChange={(e) => setField("fullName", e.target.value)}
-            isInvalid={!!errors.fullName}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {/*Please enter full name.*/}
-            {errors.fullName}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formSubject">
-          <Form.Label>Subject</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Enter subject"
-            value={form.subject}
-            onChange={(e) => setField("subject", e.target.value)}
-            isInvalid={!!errors.subject}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {/*Please enter a subject.*/}
-            {errors.subject}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={form.email}
-            onChange={(e) => setField("email", e.target.value)}
-            isInvalid={!!errors.email}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {/* Please enter valid email.*/}
-            {errors.email}
-          </Form.Control.Feedback>
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formMessage">
-          <Form.Label>Message</Form.Label>
-          <Form.Control
-            as="textarea"
-            type="textarea"
-            rows={3}
-            placeholder="Enter message"
-            value={form.message}
-            onChange={(e) => setField("message", e.target.value)}
-            isInvalid={!!errors.message}
-            required
-          />
-          <Form.Control.Feedback type="invalid">
-            {/* Please enter a message.*/}
-            {errors.message}
-          </Form.Control.Feedback>
-        </Form.Group>
-
-        <Button
-          onClick={handleSubmit}
-          variant="primary"
-          type="submit"
-          className="my-2"
-        >
-          Submit
-        </Button>
-      </Form>
+      {!submitted ? theForm : formSubmitted}
     </FormContainer>
   );
 };
