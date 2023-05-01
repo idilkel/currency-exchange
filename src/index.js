@@ -12,23 +12,44 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-//GitHub pages doesn't support the tech used by the BrowserRouter
-//HashRouter and RouterProvider are required
-const router = createHashRouter([
-  {
-    path: "/*",
-    element: <App />,
-  },
-]);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <React.StrictMode>
-  // <BrowserRouter basename="/currency-exchange">
-  <Provider store={store}>
-    <RouterProvider router={router} />
-  </Provider>
-  // </BrowserRouter>
-
+  <BrowserRouter basename="/currency-exchange">
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
   // </React.StrictMode>
 );
+
+//GitHub pages doesn't support the tech used by the BrowserRouter
+//HashRouter and RouterProvider are required
+// const router = createHashRouter([
+//   {
+//     path: "/*",
+//     element: <App />,
+//   },
+// ]);
+
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(
+//   // <React.StrictMode>
+//   // <BrowserRouter basename="/currency-exchange">
+//   <Provider store={store}>
+//     <RouterProvider router={router} />
+//   </Provider>
+//   // </BrowserRouter>
+//   // </React.StrictMode>
+// );
+
+//in packagejson:  "homepage": "https://idilkel.github.io/currency-exchange",
+//in packagejson:
+// "scripts": {
+//   "start": "react-scripts start",
+//   "predeploy": "npm run build",
+//   "deploy": "gh-pages -d build",
+//   "build": "react-scripts build",
+//   "test": "react-scripts test",
+//   "eject": "react-scripts eject"
+// },
