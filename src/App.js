@@ -24,7 +24,7 @@ function App() {
   useEffect(() => {
     console.log("fetching rates with useEffect...");
     dispatch(fetchRates2());
-    dispatch(fetchRatesHistory()); //real data<-------------------------------
+    // dispatch(fetchRatesHistory()); //real data<-------------------------------
   }, []);
 
   // //Mock Rates

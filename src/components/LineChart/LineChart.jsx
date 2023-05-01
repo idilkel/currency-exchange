@@ -50,8 +50,8 @@ console.log(
 );
 
 const dateMinusDay = (days) => {
-  let endDate = new Date(); //with real data <------------------------------------------------------
-  // let endDate = new Date("April 30, 2023"); //to use the mock data <------------------------------------------------------
+  // let endDate = new Date(); //with real data <------------------------------------------------------
+  let endDate = new Date("May 01, 2023"); //to use the mock data <------------------------------------------------------
   endDate.setDate(endDate.getDate() - days);
   let day = endDate.getDate();
   let month = endDate.getMonth() + 1;
@@ -125,8 +125,8 @@ const LineChart = () => {
 
   const currency = fromRate.substring(0, 3);
   const rateByMinusDayByCurrency = (days, currency) => {
-    return rateHistory.rates[dateMinusDay(days)][currency]; //real data<--------------------------------------------------
-    // return mockRateHistoryResponse.rates[dateMinusDay(days)][currency]; //mock data<--------------------------------------------------
+    // return rateHistory.rates[dateMinusDay(days)][currency]; //real data<--------------------------------------------------
+    return mockRateHistoryResponse.rates[dateMinusDay(days)][currency]; //mock data<--------------------------------------------------
   };
 
   console.log(rateByMinusDayByCurrency(0, "USD"));
