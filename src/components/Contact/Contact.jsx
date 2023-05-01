@@ -69,7 +69,7 @@ const Contact = () => {
 
   const formSubmitted = (
     <div>
-      <h4>Form was submitted</h4>
+      <h4>Form was "submitted"</h4>
       <div className="contact-message">
         {" "}
         <p>Full name: {form.fullName}</p>

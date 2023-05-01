@@ -1,11 +1,28 @@
-import React from "react";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Line, Chart } from "react-chartjs-2";
+import { useRef } from "react";
+import { Line, Chart, getElementsAtEvent } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 import "./LineChart.css";
 import store from "../../redux/store";
 import { changeFromRates } from "../../redux/ratesReducer";
 import { mockRateHistoryResponse } from "../../redux/mockData";
+import {
+  Chart as ChartJS,
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+
+ChartJS.register(
+  LineElement,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  Tooltip,
+  Legend
+);
 
 let endDate = new Date();
 let startDate = new Date();
@@ -131,34 +148,67 @@ const LineChart = () => {
     dateMinusDay(0),
   ];
 
+  //by https://www.youtube.com/watch?v=ildCXRgd9b8
   const data = {
     labels: rateLabel,
     datasets: [
       {
-        label: `Rates ${currency}/USD`,
-        data: rateData, //each value corresponds to a label
-        borderColor: ["blue"], //the line
-        backgroundColor: ["blue"], //the area under the line
-        pointBackgroundColor: "black", //datapoint
-        pointBorderColor: "black", //datapoint
+        label: `Mock Rates History: ${currency}/USD`,
+        data: rateData,
+        borderColor: "blue",
+        backgroundColor: "blue",
+        pointBackgroundColor: "black",
+        pointBorderColor: "black",
+        // tension: 0.4,
       },
     ],
   };
 
-  const options = {
-    title: { display: true, text: "Line Chart" },
-    // scales: {
-    //   yAxes: [
-    //     {
-    //       scaleLabel: {
-    //         display: true,
-    //         labelString: `ILS/USD`,
-    //       },
-    //       ticks: { min: 0, max: 6, stepSize: 1 },
-    //     },
-    //   ],
-    // },
+  const options = {};
+
+  //Get data of clickable points for future needs
+  //by https://www.youtube.com/watch?v=ildCXRgd9b8
+  const chartRef = useRef();
+  const onClick = (e) => {
+    if (getElementsAtEvent(chartRef.current, e).length > 0) {
+      //console.log(getElementsAtEvent(chartRef.current, e));
+      const clickDatasetIndex = getElementsAtEvent(chartRef.current, e)[0]
+        .datasetIndex; //the line set number
+      //console.log(clickDatasetIndex);
+      const clickDataPoint = getElementsAtEvent(chartRef.current, e)[0].index; //point index
+      //console.log(clickDataPoint);
+    }
   };
+
+  //by https://www.youtube.com/watch?v=28ZbeLWmfiQ
+  // const data = {
+  //   labels: rateLabel,
+  //   datasets: [
+  //     {
+  //       label: `Rates ${currency}/USD`,
+  //       data: rateData, //each value corresponds to a label
+  //       borderColor: ["blue"], //the line
+  //       backgroundColor: ["blue"], //the area under the line
+  //       pointBackgroundColor: "black", //datapoint
+  //       pointBorderColor: "black", //datapoint
+  //     },
+  //   ],
+  // };
+
+  // const options = {
+  //   title: { display: true, text: "Line Chart" },
+  //   // scales: {
+  //   //   yAxes: [
+  //   //     {
+  //   //       scaleLabel: {
+  //   //         display: true,
+  //   //         labelString: `ILS/USD`,
+  //   //       },
+  //   //       ticks: { min: 0, max: 6, stepSize: 1 },
+  //   //     },
+  //   //   ],
+  //   // },
+  // };
 
   //even code from docs: https://react-chartjs-2.js.org/docs/working-with-datasets
   //TypeError: Cannot convert object to primitive value
@@ -166,7 +216,17 @@ const LineChart = () => {
   return (
     <div className="lineChart-container">
       <div>{selectForm}</div>
-      <Line className="LineChart" data={data} options={options} />
+      <div style={{ width: "80%", padding: "20px" }}>
+        {" "}
+        <Line
+          data={data}
+          options={options}
+          onClick={onClick}
+          ref={chartRef}
+        ></Line>
+      </div>
+
+      {/*<Line className="LineChart" data={data} options={options} />*/}
       {/*<Line
         datasetIdKey="id"
         data={{
