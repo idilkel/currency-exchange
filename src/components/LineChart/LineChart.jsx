@@ -164,7 +164,7 @@ const LineChart = () => {
     ],
   };
 
-  const options = {};
+  const options = { maintainAspectRatio: false };
 
   //Get data of clickable points for future needs
   //by https://www.youtube.com/watch?v=ildCXRgd9b8
@@ -216,15 +216,15 @@ const LineChart = () => {
   return (
     <div className="lineChart-container">
       <div>{selectForm}</div>
-      <div style={{ width: "80%", padding: "20px" }}>
-        {" "}
-        <Line
-          data={data}
-          options={options}
-          onClick={onClick}
-          ref={chartRef}
-        ></Line>
-      </div>
+
+      <Line
+        data={data}
+        options={options}
+        onClick={onClick}
+        ref={chartRef}
+        className="lineChart"
+        style={{ width: "100%", height: "100%" }}
+      ></Line>
 
       {/*<Line className="LineChart" data={data} options={options} />*/}
       {/*<Line

@@ -92,7 +92,7 @@ const NavBar = () => {
             </Navbar.Text>
           </Nav>
           <Nav className="me-auto">
-            <Navbar.Text>To:</Navbar.Text>
+            <Navbar.Text>Calculators:</Navbar.Text>
           </Nav>
           <Nav className="me-auto">
             <LinkContainer to="calculator/ILS">

@@ -28,17 +28,21 @@
 }
 
 @media only screen and (max-height: 807px) {
+  .About {
+    margin: 0;
+  }
   .About .container {
     max-height: 90%;
   }
 
   .About p {
-    margin: 5px;
+    margin: 2px;
     font-size: small;
+    line-height: 20px;
   }
 
   .About ul {
-    padding-left: 10px;
+    padding-left: 0;
     font-size: large;
     font-weight: 500;
   }

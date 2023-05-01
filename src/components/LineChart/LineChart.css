@@ -5,18 +5,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 30px 0;
-}
-
-.lineChart-container .LineChart {
-  height: 100%;
+  padding: 10px 0 40px 0;
+  margin-top: 20px;
 }
 
 /* LineChart inserts a canvas element */
 canvas {
-  width: 100%;
   height: 100%;
-  margin: 20px 0;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .select-responsive {
@@ -26,6 +24,7 @@ canvas {
 @media only screen and (max-width: 450px) {
   .select-responsive {
     padding: 3px;
+    margin: 20px 0;
     display: block;
   }
 
@@ -35,6 +34,12 @@ canvas {
 
   .lineChart-container {
     justify-content: start;
+  }
+
+  canvas {
+    padding: 0 0 50px 0;
+    height: 80%;
+    margin: 0;
   }
 }
 
@@ -47,5 +52,24 @@ canvas {
 
   canvas {
     margin: 0;
+  }
+}
+
+@media only screen and (max-height: 807px) {
+  .lineChart-container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  canvas {
+    padding: 30px 0;
+    margin: 0;
+  }
+  .select-responsive {
+    padding: 3px;
+    margin: 20px 0;
+    display: block;
   }
 }
