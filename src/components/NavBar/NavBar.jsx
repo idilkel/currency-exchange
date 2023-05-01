@@ -12,6 +12,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useState } from "react";
 
 const NavBar = () => {
+  const [expanded, setExpanded] = useState(false);
   let ILSRate = store.getState().rates.conversionRates.ILS;
   let USDRate = store.getState().rates.conversionRates.USD;
   let EURRate = store.getState().rates.conversionRates.EUR;
@@ -71,10 +72,19 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar variant="dark" bg="primary" expand="md" className="NavBar">
+    <Navbar
+      variant="dark"
+      bg="primary"
+      expand="md"
+      className="NavBar"
+      expanded={expanded}
+    >
       <Container>
         <Navbar.Brand href="#home">Currency Exchange Rates</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setExpanded(expanded ? false : "expanded")}
+        />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Navbar.Text>
@@ -96,7 +106,7 @@ const NavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <LinkContainer to="calculator/ILS">
-              <Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)}>
                 <img
                   src={require("../../assets/icons8-israel-48.png")}
                   alt="flag"
@@ -116,7 +126,7 @@ const NavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <LinkContainer to="calculator/USD">
-              <Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)}>
                 <img
                   src={require("../../assets/icons8-usa-48.png")}
                   alt="flag"
@@ -136,7 +146,7 @@ const NavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <LinkContainer to="calculator/EUR">
-              <Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)}>
                 <img
                   className="europe"
                   src={require("../../assets/icons8-flag-of-europe-48.png")}
@@ -157,7 +167,7 @@ const NavBar = () => {
           </Nav>
           <Nav className="me-auto">
             <LinkContainer to="calculator/GBP">
-              <Nav.Link>
+              <Nav.Link onClick={() => setExpanded(false)}>
                 <img
                   src={require("../../assets/icons8-great-britain-48.png")}
                   alt="flag"
