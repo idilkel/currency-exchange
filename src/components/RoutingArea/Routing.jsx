@@ -7,6 +7,7 @@ import Contact from "../Contact/Contact";
 import LineChart from "../LineChart/LineChart";
 import RateCalculator from "../RateCalculator/RateCalculator";
 import "./Routing.css";
+import LineChartTest from "../LineChart/LineChartTest";
 
 const Routing = () => {
   return (
@@ -15,6 +16,7 @@ const Routing = () => {
         <Route path="/" element={<App />} />
         <Route path="/chart" element={<LineChart />} />
         <Route index element={<LineChart />} />
+        <Route path="/test" element={<LineChartTest />} />
         <Route path="/home" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
