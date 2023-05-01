@@ -3,6 +3,7 @@ import { Line, Chart, getElementsAtEvent } from "react-chartjs-2";
 import { useDispatch, useSelector } from "react-redux";
 import "./LineChart.css";
 import store from "../../redux/store";
+import Spinner from "react-bootstrap/Spinner";
 import { changeFromRates } from "../../redux/ratesReducer";
 import { mockRateHistoryResponse } from "../../redux/mockData";
 import {
@@ -67,6 +68,7 @@ const dateMinusDay = (days) => {
 
 const LineChart = () => {
   const fromRate = useSelector((state) => state.rates.fromRate);
+  const loading = useSelector((state) => state.loading);
   const rateHistory = useSelector(
     (state) => state.rates.conversionRatesHistory
   );
@@ -210,21 +212,30 @@ const LineChart = () => {
   //   // },
   // };
 
+  const spinner = (
+    <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+  );
+
   //even code from docs: https://react-chartjs-2.js.org/docs/working-with-datasets
   //TypeError: Cannot convert object to primitive value
   //http://localhost:3000/test
   return (
     <div className="lineChart-container">
       <div>{selectForm}</div>
-
-      <Line
-        data={data}
-        options={options}
-        onClick={onClick}
-        ref={chartRef}
-        className="lineChart"
-        style={{ width: "100%", height: "100%" }}
-      ></Line>
+      {loading ? (
+        spinner
+      ) : (
+        <Line
+          data={data}
+          options={options}
+          onClick={onClick}
+          ref={chartRef}
+          className="lineChart"
+          style={{ width: "100%", height: "100%" }}
+        ></Line>
+      )}
 
       {/*<Line className="LineChart" data={data} options={options} />*/}
       {/*<Line
