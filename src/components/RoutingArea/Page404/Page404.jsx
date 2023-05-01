@@ -2,7 +2,7 @@ import "./Page404.css";
 
 const Page404 = () => {
   return (
-    <div className="Page404 flex-center-col">
+    <div className=" flex-center-col Page404">
       <h2>Error 404</h2>
       <h2>Page Not Found</h2>
       <iframe

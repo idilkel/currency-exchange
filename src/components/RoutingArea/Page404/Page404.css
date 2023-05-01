@@ -1,4 +1,6 @@
 .Page404 {
+  height: 100%;
+  width: 100%;
 }
 
 .noHover {
@@ -11,4 +13,11 @@
 
 .Page404 h2 {
   margin: 10px;
+}
+
+@media only screen and (max-height: 850px) {
+  .Page404 iframe {
+    width: 240px;
+    height: 180px;
+  }
 }
